@@ -1,0 +1,33 @@
+name: Deploy Backend to Render
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'backend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl -s -X POST https://api.render.com/v1/services \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "service": {
+                "name": "afrique-backend",
+                "region": "oregon",
+                "repo": "https://github.com/btparistote-pixel/afrique-resurrection",
+                "branch": "main",
+                "buildCommand": "pip install -r backend/requirements.tt",
+                "startCommand": "uvicorn backend.server:app --host 0.0.0.0 --port $PORT",
+                "env": "python"
+              }
+            }'
