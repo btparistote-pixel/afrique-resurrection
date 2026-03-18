@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+motor
+python-dotenv
+aiofiles
+aiohttp
+edge-tts
+resend
+python-multipart
+Pillow

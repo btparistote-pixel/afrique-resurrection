@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: afrique-backend
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: MONGO_URL
+        fromDatabase:
+          name: afrique-db
+          property: connectionString
+      - key: DB_NAME
+        value: afrique_resurrection
+      - key: CORS_ORIGINS
+        value: "*"
+
+databases:
+  - name: afrique-db
+    plan: free
+    databaseName: afrique_resurrection
+    user: afrique_user

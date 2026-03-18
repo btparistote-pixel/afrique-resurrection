@@ -1,0 +1,13 @@
+{
+  "build": {
+    "env": {
+      "REACT_APP_BACKEND_URL": "@backend-url"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://afrique-backend.onrender.com/$1"
+    }
+  ]
+}
