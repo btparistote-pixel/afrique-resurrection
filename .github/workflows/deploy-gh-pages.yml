@@ -23,12 +23,12 @@ jobs:
       - name: Install dependencies
         run: |
           cd frontend
-          npm install
+          yarn install
 
       - name: Build
         run: |
           cd frontend
-          npm run build
+          yarn build
         env:
           REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
 
