@@ -26,7 +26,7 @@ jobs:
                 "region": "oregon",
                 "repo": "https://github.com/btparistote-pixel/afrique-resurrection",
                 "branch": "main",
-                "buildCommand": "pip install -r backend/requirements.txt",
+                "buildCommand": "pip install -r backend/requirements.tt",
                 "startCommand": "uvicorn backend.server:app --host 0.0.0.0 --port $PORT",
                 "env": "python"
               }
